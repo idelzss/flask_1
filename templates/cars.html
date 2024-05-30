@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    List of Cars
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <h1 class="mt-5">Cars list</h1>
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Model_name</th>
+                    <th>Engine</th>
+                    <th>Type of Fuel</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                    {% for car in cars %}
+                    <tr>
+                        <td>{{ car.id }}</td>
+                        <td>{{ car.model_name }}</td>
+                        <td>{{ car.engine }}</td>
+                        <td>{{ car.type_of_fuel }}</td>
+                        <td>
+                            <button type="button" class="btn btn-outline-info" onclick="location.href='/car_detail/{{ car.id }}';">Detail</button>
+                            <button type="button" class="btn btn-outline-warning" onclick="location.href='/car_edit/{{ car.id }}';">Edit</button>
+                            <button type="button" class="btn btn-outline-delete" onclick="location.href='/car_delete/{{ car.id }}';">Delete</button>
+
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-outline-success" onclick="location.href='/car_create';">Add new car</button>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous">
+
+</script>
+{% endblock %}

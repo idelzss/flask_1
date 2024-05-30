@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Detail about {{ car.id }}
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <h1 class="mt-5">Car Detail {{ car.id }}</h1>
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Model Name</th>
+                    <th>Engine</th>
+                    <th>Type of Fuel</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                    <tr>
+                        <td>{{ car.id }}</td>
+                        <td>{{ car.model_name }}</td>
+                        <td>{{ car.engine }}</td>
+                        <td>{{ car.type_of_fuel }}</td>
+                    </tr>
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-outline-success" onclick="location.href='/cars-list';">Back to list</button>
+
+    </div>
+{% endblock %}

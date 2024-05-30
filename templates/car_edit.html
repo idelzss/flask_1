@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Edit car {{car.id }}
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <h1 class="mt-5">Edit car</h1>
+        <form action="/car_edit/{{ car.id }}" method="post" class="mt-3">
+            <div class="mb-3">
+                <label for="model_name" class="form_label">Model Name</label>
+                <input class="form_control" id="model_name" type="text" name="model_name" value="{{ car.model_name }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="engine" class="form_label">Engine</label>
+                <input class="form_control" id="engine" type="text" name="engine" value="{{ car.engine }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="type_of_fuel" class="form_label">Type of Fuel</label>
+                <select class="form_select" id="type_of_fuel" name="type_of_fuel" required>
+                    <option value="GASOLINE" {% if car.type_of_fuel.value == 'Gasoline' %}selected{% endif %}>Gasoline</option>
+                    <option value="DIESEL" {% if car.type_of_fuel.value == 'Diesel' %}selected{% endif %}>Diesel</option>
+                    <option value="GAS" {% if car.type_of_fuel.value == 'Gas' %}selected{% endif %}>Gas</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Update Car</button>
+        </form>
+    </div>
+{% endblock %}
